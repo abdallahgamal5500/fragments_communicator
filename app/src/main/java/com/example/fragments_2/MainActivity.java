@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements Fragment_1.Ifragment_1,Fragment_2.Ifragment_2 {
+public class MainActivity extends AppCompatActivity implements Communicator {
 
     private Fragment_1 fragment_1;
     private Fragment_2 fragment_2;
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements Fragment_1.Ifragm
                 .replace(R.id.framelayout_1,fragment_1)
                 .replace(R.id.framelayout_2,fragment_2)
                 .commit();
-
     }
 
     @Override
@@ -35,4 +34,14 @@ public class MainActivity extends AppCompatActivity implements Fragment_1.Ifragm
     public void Text2(String text) {
         fragment_1.updateEdittext(text);
     }
+
+//    @Override
+//    public void Text1(String text) {
+//        fragment_2.updateEdittext(text);
+//    }
+//
+//    @Override
+//    public void Text2(String text) {
+//        fragment_1.updateEdittext(text);
+//    }
 }

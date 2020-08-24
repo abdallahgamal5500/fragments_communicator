@@ -16,18 +16,19 @@ import android.widget.Toast;
 
 public class Fragment_2 extends Fragment {
 
-    private Ifragment_2 ifragment_2;
+//    private Ifragment_2 ifragment_2;
     private EditText editText;
     private Button button;
     private String text;
+    private Communicator communicator;
 
-    public interface Ifragment_2 {
-        void Text2 (String text);
-    }
+//    public interface Ifragment_2 {
+//        void Text2 (String text);
+//    }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_2,container,false);
 
         editText = view.findViewById(R.id.fragment2_edittext);
@@ -37,7 +38,8 @@ public class Fragment_2 extends Fragment {
             @Override
             public void onClick(View v) {
                 text = editText.getText().toString();
-                ifragment_2.Text2(text);
+//                ifragment_2.Text2(text);
+                communicator.Text2(text);
             }
         });
         return view;
@@ -50,16 +52,17 @@ public class Fragment_2 extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof Ifragment_2) {
-            ifragment_2 = (Ifragment_2) context;
-        } else {
-            Toast.makeText(context, "Bug", Toast.LENGTH_SHORT).show();
-        }
+//        if (context instanceof Ifragment_2) {
+//            ifragment_2 = (Ifragment_2) context;
+        communicator = (Communicator) context;
+//        } else {
+//            Toast.makeText(context, "Bug", Toast.LENGTH_SHORT).show();
+//        }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        ifragment_2 = null;
-    }
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        ifragment_2 = null;
+//    }
 }
