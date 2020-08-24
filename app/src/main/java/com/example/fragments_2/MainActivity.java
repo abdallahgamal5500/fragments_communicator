@@ -6,27 +6,33 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements Communicator{
+public class MainActivity extends AppCompatActivity implements Fragment_1.Ifragment_1,Fragment_2.Ifragment_2 {
 
-    private Fragment_1 fragment_1 = new Fragment_1();
-    private Fragment_2 fragment_2 = new Fragment_2();
+    private Fragment_1 fragment_1;
+    private Fragment_2 fragment_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fragment_1 = new Fragment_1();
+        fragment_2 = new Fragment_2();
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.framelayout,fragment_1)
+                .replace(R.id.framelayout_1,fragment_1)
+                .replace(R.id.framelayout_2,fragment_2)
                 .commit();
+
     }
 
     @Override
-    public void HandelFragments(int text, Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.framelayout,fragment)
-                .commit();
-        //Toast.makeText(this, ""+text, Toast.LENGTH_SHORT).show();
-        fragment_2.showText(text);
+    public void Text1(String text) {
+        fragment_2.updateEdittext(text);
+    }
+
+    @Override
+    public void Text2(String text) {
+        fragment_1.updateEdittext(text);
     }
 }
